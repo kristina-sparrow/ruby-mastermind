@@ -1,4 +1,6 @@
-require_relative 'input.rb'
+# frozen_string_literal: true
+
+require_relative 'input'
 
 class Computer
   include Input

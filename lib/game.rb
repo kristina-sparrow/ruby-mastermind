@@ -1,6 +1,8 @@
-require_relative 'instructions.rb'
-require_relative 'input.rb'
-require_relative 'display.rb'
+# frozen_string_literal: true
+
+require_relative 'instructions'
+require_relative 'input'
+require_relative 'display'
 
 class Game
   attr_reader :rows, :code, :gameboard, :game_mode, :breaker, :maker
@@ -28,11 +30,13 @@ class Game
 
   def new_game
     setup_game
+    @gameboard = Gameboard.new(code: code, rows: rows)
     play_turn until game_over?
     end_game
   end
 
   def setup_game
+    self.turn = -1
     @game_mode = get_game_mode
     @rows = get_rows
     @breaker = game_mode == 1 ? Human.new : Computer.new
@@ -50,11 +54,11 @@ class Game
   end
 
   def play_turn
-    self.turn = (turn || -1) + 1
+    self.turn += 1
     clear_screen
     4.times do |i|
       puts gameboard
-      puts "Thinking... this may take awhile" if breaker.name == 'Computer'
+      puts 'Thinking... this may take awhile' if breaker.name == 'Computer'
       guess = breaker.new_guess(gameboard)
       gameboard.add_guess(row: turn, col: i, guess: guess)
       clear_screen
@@ -66,6 +70,7 @@ class Game
   def game_over?
     return 'loser' if rows == turn + 1 && gameboard.keys_at(turn).uniq != ['red']
     return 'winner' if gameboard.keys_at(turn).uniq == ['red']
+
     false
   end
 

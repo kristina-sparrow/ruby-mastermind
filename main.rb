@@ -1,8 +1,10 @@
-require './lib/colors.rb'
-require './lib/gameboard.rb'
-require './lib/game.rb'
-require './lib/human.rb'
-require './lib/computer.rb'
+# frozen_string_literal: true
+
+require './lib/colors'
+require './lib/gameboard'
+require './lib/game'
+require './lib/human'
+require './lib/computer'
 require 'io/wait'
 
-game = Game.new.play
+Game.new.play

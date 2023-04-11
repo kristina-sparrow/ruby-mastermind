@@ -1,13 +1,15 @@
-require_relative 'display.rb'
+# frozen_string_literal: true
+
+require_relative 'display'
 
 class Gameboard
   include Display
 
-  attr_reader :rows, :secret_code, :board
+  attr_reader :rows, :code, :board
 
-  def initialize(secret_code: Array.new(4, 'red'), rows: 12, board: empty_board(rows))
+  def initialize(code: Array.new(4, 'red'), rows: 12, board: empty_board(rows))
     @rows = rows
-    @secret_code = secret_code
+    @code = code
     @board = board
   end
 
@@ -18,14 +20,14 @@ class Gameboard
   def update_keys(row:)
     keys = []
     temp_guess = board[row][:guess]
-    temp_code = secret_code.dup
+    temp_code = code.dup
 
     temp_guess.each_with_index do |str, i|
-      if temp_code[i] == str
-        keys.push('red')
-        temp_code[i] = 'empty'
-        temp_guess[i] = 'found'
-      end
+      next unless temp_code[i] == str
+
+      keys.push('red')
+      temp_code[i] = 'empty'
+      temp_guess[i] = 'found'
     end
 
     temp_guess.each do |str|
@@ -51,8 +53,8 @@ class Gameboard
   end
 
   def to_s
-    game_rows = board.map { |obj| game_row(obj[:guess], obj[:keys]) }.join("\n" + middle_row + "\n")
-    top_row + "\n" + game_rows + "\n" + bottom_row
+    game_rows = board.map { |obj| game_row(obj[:guess], obj[:keys]) }.join("\n#{middle_row}\n")
+    "#{top_row}\n#{game_rows}\n#{bottom_row}"
   end
 
   private

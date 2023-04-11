@@ -1,8 +1,11 @@
-require_relative 'input.rb'
+# frozen_string_literal: true
+
+require_relative 'input'
 
 class Human
   include Input
   attr_reader :name
+
   def initialize
     @name = 'Human'
   end
