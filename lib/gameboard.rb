@@ -1,4 +1,4 @@
-require 'display.rb'
+require_relative 'display.rb'
 
 class Gameboard
   include Display

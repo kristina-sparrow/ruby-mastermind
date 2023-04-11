@@ -1,4 +1,4 @@
-require 'input.rb'
+require_relative 'input.rb'
 
 class Computer
   include Input

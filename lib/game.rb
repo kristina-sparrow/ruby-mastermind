@@ -1,11 +1,12 @@
-require 'instructions.rb'
-require 'input.rb'
-require 'display.rb'
+require_relative 'instructions.rb'
+require_relative 'input.rb'
+require_relative 'display.rb'
 
 class Game
   attr_reader :rows, :code, :gameboard, :game_mode, :breaker, :maker
   attr_accessor :turn
 
+  include Instructions
   include Input
   include Display
 
