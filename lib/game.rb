@@ -37,20 +37,12 @@ class Game
 
   def setup_game
     self.turn = -1
-    @game_mode = get_game_mode
-    @rows = get_rows
+    @game_mode = get_int_between(messages('mode'), 1, 2) # 1 = human breaker, 2 = human maker
+    @rows = get_int_between(messages('rows'), 1, 15)
     @breaker = game_mode == 1 ? Human.new : Computer.new
     @maker = game_mode == 1 ? Computer.new : Human.new
     @code = maker.set_code
     clear_screen
-  end
-
-  def get_game_mode
-    get_int_between(messages('mode'), 1, 2) # 1 = human breaker, 2 = human maker
-  end
-
-  def get_rows
-    get_int_between(messages('rows'), 1, 15)
   end
 
   def play_turn

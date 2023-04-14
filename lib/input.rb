@@ -3,10 +3,10 @@
 module Input
   def messages(str)
     {
-      'rows' => 'Enter number of maximum guesses (typical is 12): ',
+      'rows' => 'Enter maximum number of allowed guesses (typical is 12): ',
       'mode' => 'Please select a game mode (1: BREAK code, 2: SET code): ',
-      'code' => "Enter a valid code (e.g. 'p g r r' or 'purple green red red'): ",
-      'guess' => "Enter a valid guess (e.g. 'b' or 'blue'): ",
+      'code' => "Create a code of four pegs, entering one color at a time (e.g. 'purple' 'blue' or 'b'): ",
+      'guess' => "Enter your guess, choosing one color at a time (e.g. 'b' or 'blue'): ",
       'win' => 'Congratulations, you win!',
       'lose' => 'Sorry, you lose. Better luck next time!',
       'again' => 'Would you like to play again? (y/n?): ',
@@ -60,6 +60,7 @@ module Input
 
   def get_guess(message)
     valid_inputs = %w[r g b y p c]
+    puts "Available options are: #{valid_inputs.join(', ')}"
     guess = get_valid_input(message, valid_inputs)
     color(guess)
   end
