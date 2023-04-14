@@ -51,8 +51,8 @@ class Gameboard
   def to_s
     game_rows = board
                 .map { |obj| game_row(obj[:guess], obj[:keys]) }
-                .join("\n" + middle_row + "\n")
-    top_row + "\n" + game_rows + "\n" + bottom_row
+                .join("\n#{middle_row}\n")
+    "#{top_row}\n#{game_rows}\n#{bottom_row}"
   end
 
   def self.create_row(guess: Array.new(4, 'empty'), keys: Array.new(4, 'empty'))

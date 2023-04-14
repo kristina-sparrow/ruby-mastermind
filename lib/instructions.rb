@@ -24,19 +24,19 @@ module Instructions
       Below is a sample game:
 
       #{'Code:'.bold.underline}
-      #{Gameboard.new(rows: 1, board: [{ guess: %w[red purple purple blue], # {' '}
+      #{Gameboard.new(rows: 1, board: [{ guess: %w[red purple purple blue],
                                          keys: %w[empty empty empty empty] }])}
 
       #{'Gameplay:'.bold.underline}
-      #{Gameboard.new(rows: 5, board: [{ guess: %w[red red blue blue], # {' '}
-                                         keys: %w[used red used red] }, # {' '}
-                                       { guess: %w[red red green green],  # {' '}
-                                         keys: %w[used red used used] },  # {' '}
-                                       { guess: %w[red yellow blue yellow], # {' '}
-                                         keys: %w[red used white used] }, # {' '}
-                                       { guess: %w[red purple purple blue], # {' '}
-                                         keys: %w[red red red red] }, # {' '}
-                                       { guess: %w[empty empty empty empty],  # {' '}
+      #{Gameboard.new(rows: 5, board: [{ guess: %w[red red blue blue],
+                                         keys: %w[used red used red] },
+                                       { guess: %w[red red green green],
+                                         keys: %w[used red used used] },
+                                       { guess: %w[red yellow blue yellow],
+                                         keys: %w[red used white used] },
+                                       { guess: %w[red purple purple blue],
+                                         keys: %w[red red red red] },
+                                       { guess: %w[empty empty empty empty],
                                          keys: %w[empty empty empty empty] }])}
 
       This program has two game modes:

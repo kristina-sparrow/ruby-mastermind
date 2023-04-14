@@ -14,15 +14,12 @@ module Input
     }[str]
   end
 
-  def get_int_between(message, min, max, zero: true)
+  def get_int_between(message, min, max, allow_zero: true)
     loop do
       print message
-      int = gets.chomp.to_i
-      if int.zero? && !zero
-        int = min - 1
-      elsif (min..max).include?(int)
-        return int
-      end
+      input = gets.chomp.to_i
+      return input if (allow_zero && input.between?(min, max)) || input.between?(min, max - 1)
+
       puts "Number must be between #{min} & #{max}, inclusive."
       puts "Zero #{'not ' unless zero}included." if (min..max).include?(0)
     end
